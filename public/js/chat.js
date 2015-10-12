@@ -1,4 +1,5 @@
 var id;
+var color;
 var socket = io();
 
 $('form').submit(function(){
@@ -14,6 +15,7 @@ socket.on('new_user', function(user){
   $('#userImage').html("<li><img id='profile' src='img/" + user.pokemon + ".png' alt='' class='responsive-img'></li>");
   //name
   $('#userName').html("<li><a href='#'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon + "</a></li>");
+  getDominantColor();
 });
 
 socket.on('chat message', function(msg, user){

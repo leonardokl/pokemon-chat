@@ -22,3 +22,16 @@
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/chat.js"></script>
+  <script src="js/color-thief.min.js"></script>
+  <script>
+    function getDominantColor() {
+      var myImage = document.getElementById('profile');
+      myImage.addEventListener('load', function() {
+          var colorThief = new ColorThief(),
+              color = colorThief.getColor(myImage),
+              colorRgb = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')';
+              $('nav').css("background-color", colorRgb);
+          return colorRgb;          
+      });
+    }
+  </script>
