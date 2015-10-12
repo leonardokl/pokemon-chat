@@ -3,51 +3,50 @@
 <head>
 	<title>Node Chat</title>
 	<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel="stylesheet" href="css/chat.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/chat.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link type="image/x-icon" rel="icon" href="img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link type="image/x-icon" rel="icon" href="img/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
 	<header class="navbar-fixed">
-	<nav>
-	    <ul id="slide-out" class="side-nav fixed" >
-		    <li class="no-padding">
-				<ul class="collapsible collapsible-accordion">
-			        <li >
-			          	<a class="collapsible-header"><i class="tiny material-icons">input</i>Rooms (1)</a>
-			          	<div class="collapsible-body">
-			            	<ul>
-				              	<li><a href="#!">#Stadium</a></li>
-			            	</ul>
-			          	</div>
-			        </li>
-		      	</ul>
-			</li>
-			<li class="no-padding">
-		      	<ul class="collapsible collapsible-accordion">
-			        <li>
-			          	<a class="collapsible-header" ><i class="tiny material-icons">supervisor_account</i>Users (<span id="nUsers">0</span>)</a>
-			          	<div class="collapsible-body">
-			            	<ul id="roomUsers">
-				              	<li><a href="#!">First</a></li>
-				              	<li><a href="#!">Second</a></li>
-				              	<li><a href="#!">Third</a></li>
-			            	</ul>
-			          	</div>
-			        </li>
-		      	</ul>
-	      	</li>
-		</ul>
+		<nav>
+			<ul id="slide-out" class="side-nav fixed" >
+				<li id="userName"></li>
+				<li id="userImage"></li>
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+						<li >
+							<a class="collapsible-header"><i class="tiny material-icons">input</i>Rooms (1)</a>
+							<div class="collapsible-body">
+								<ul>
+									<li><a href="#!">#Stadium</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+						<li>
+							<a class="collapsible-header" ><i class="tiny material-icons">supervisor_account</i>Users (<span id="nUsers">0</span>)</a>
+							<div class="collapsible-body">
+								<ul id="roomUsers">
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
 
-		<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+			<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
-		<div class="nav-wrapper">
-	       	<a href="/" class="brand-logo center">#Stadium</a>
-	    </div>
-	</nav>
+			<div class="nav-wrapper">
+				<a href="/" class="brand-logo center">#Stadium</a>
+			</div>
+		</nav>
 	</header>
 
 	<!-- MAIN CONTENT -->
@@ -60,9 +59,9 @@
 	<!-- /MAIN CONTENT -->
 
 	<!-- SCRIPTS -->
-  	<script type="text/javascript" src="js/materialize.min.js"></script>
-  	<script type="text/javascript">
-  		$(".button-collapse").sideNav();
-  	</script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript">
+	$(".button-collapse").sideNav();
+	</script>
 </body>
 </html>

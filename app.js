@@ -19,7 +19,6 @@ app.get('/', function(req, res){
 // socket.io
 var users = [];
 var pokemon = ['Professor_Oak', 'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu'];
-//var bot = {pokemon:'Professor_Oak'};
 
 io.on('connection', function(socket){
   user = {
@@ -29,7 +28,6 @@ io.on('connection', function(socket){
   users.push(user);
   console.log('Online Users: ' + users.length);
 
-  //user picture id
   socket.emit('new_user', user);
 
   //new user event

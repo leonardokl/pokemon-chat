@@ -8,11 +8,12 @@ $('form').submit(function(){
 });
 
 //quando entrar no chat
-socket.on('new_user', function(user){id = user;
+socket.on('new_user', function(user){
+  id = user;
   //img
-  $('#slide-out').prepend("<li><img id='profile' src='img/" + user.pokemon + ".png' alt='' class='responsive-img'></li>");
+  $('#userImage').html("<li><img id='profile' src='img/" + user.pokemon + ".png' alt='' class='responsive-img'></li>");
   //name
-  $('#slide-out').prepend("<li><a href='#'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon + "</a></li>");
+  $('#userName').html("<li><a href='#'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon + "</a></li>");
 });
 
 socket.on('chat message', function(msg, user){
@@ -20,8 +21,9 @@ socket.on('chat message', function(msg, user){
 });
 
 socket.on('bot message', function(msg){
-  $('#messages').append($('<li class="collection-item avatar">').html("<img src='img/Oak.png' alt='' class='circle'><span class='title'><b>Professor Oak</b></span><p>" + msg + "</p>"));document.getElementById( 'last-message' ).scrollIntoView();
+  $('#messages').append($('<li class="collection-item avatar">').html("<img src='img/Oak.png' alt='' class='circle'><span class='title'><b style='color:#4DB6AC'>Professor Oak</b></span><p>" + msg + "</p>"));document.getElementById( 'last-message' ).scrollIntoView();
 });
+
 socket.on('room_users', function(users){
   usersLi = [];
   $.each(users, function( key, val ) {
