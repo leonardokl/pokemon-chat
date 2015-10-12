@@ -1,18 +1,15 @@
 var express = require('express')
-  , app = express()
   , http = require('http').Server(app)
   , io = require('socket.io')(http)
   , morgan = require('morgan')
   , handlebars = require('express-handlebars').create({ defaultLayout:'main' })
-  , bodyParser = require('body-parser')
   , Pokemons = require('./models/pokemons').pokemons
   ;
 
-
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+var app = express();
 app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -20,29 +17,22 @@ app.get('/', function(req, res){
   res.render('chat');
 });
 
-app.put('/message', function(req, res){
-  io.emit('bot message', req.body.message);
-  res.status(200).json({
-    success: true,
-    info: 'message sent',
-    message: req.body.message
-  });
-});
-
 // socket.io
 var users = [];
+var pokemon = ['Professor_Oak', 'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu'];
 
 io.on('connection', function(socket){
   user = {
     id: socket.id,
-    pokemon: Pokemons[Math.floor((Math.random() * 150))],
+    pokemon: pokemon[Math.floor((Math.random() * 25) + 1)]
   };
   users.push(user);
+  console.log('Online Users: ' + users.length);
 
   socket.emit('new_user', user);
 
   //new user event
-  io.emit('bot message', user.pokemon.name + ' entrou');
+  io.emit('bot message', user.pokemon + ' entrou');
 
   io.emit('users_count', users.length);
   io.emit('room_users', users);
@@ -52,13 +42,13 @@ io.on('connection', function(socket){
   });
 
   socket.on('disconnect', function(){
-    // remove user
     users = users.filter(function( obj ) {
       return obj.id !== socket.id;
     });
 
-    io.emit('bot message', user.pokemon.name + ' saiu');
+    io.emit('bot message', user.pokemon + ' saiu');
     io.emit('room_users', users);
+    console.log('Online Users: ' + users.length);
   });
 });
 

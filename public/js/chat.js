@@ -12,14 +12,14 @@ $('form').submit(function(){
 socket.on('new_user', function(user){
   id = user;
   //img
-  $('#userImage').html("<li><img id='profile' src='img/" + user.pokemon + ".png' alt='' class='responsive-img'></li>");
+  $('#userImage').html("<li><img id='profile' src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='responsive-img'></li>");
   //name
-  $('#userName').html("<li><a href='#'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon + "</a></li>");
+  $('#userName').html("<li><a href='#'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon.name + "</a></li>");
   getDominantColor();
 });
 
 socket.on('chat message', function(msg, user){
-  $('#messages').append($('<li class="collection-item avatar">').html("<img src='img/" + user.pokemon + ".png' alt='' class='circle'><span class='title'><b>" + user.pokemon + "</b></span><p>" + msg + "</p>"));document.getElementById( 'last-message' ).scrollIntoView();
+  $('#messages').append($('<li class="collection-item avatar">').html("<img src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='circle'><span class='title'><b>" + user.pokemon.name + "</b></span><p>" + msg + "</p>"));document.getElementById( 'last-message' ).scrollIntoView();
 });
 
 socket.on('bot message', function(msg){
@@ -29,7 +29,7 @@ socket.on('bot message', function(msg){
 socket.on('room_users', function(users){
   usersLi = [];
   $.each(users, function( key, val ) {
-    usersLi.push("<li><a>" + users[key].pokemon + "</a></li>")
+    usersLi.push("<li><a>" + users[key].pokemon.name + "</a></li>")
   });
   $("#roomUsers").html(usersLi);
   $("#nUsers").html(users.length);
