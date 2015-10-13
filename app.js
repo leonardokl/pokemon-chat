@@ -41,17 +41,19 @@ io.on('connection', function(socket) {
   socket.emit('new_user', user);
 
   //new user event
-  io.emit('bot message', user.pokemon.name + ' entrou');
+  io.emit('bot message', user.pokemon.name + ' entrou', user, 'enter');
   io.emit('room_users', users);
 
-  socket.on('chat message', function(msg, user) {
-    io.emit('chat message', msg, user);
+  socket.on('chat message', function(msg, from, to) {
+    if(to == 'Stadium') {
+      io.emit('chat message', msg, from, to);
+    }
   });
 
   socket.on('personal message', function(msg, from, to) {
     sockets.filter(function(obj) {
-      if(obj.id == to) {
-        obj.emit('personal message', msg, from, to);
+      if(obj.id == to.id) {
+        obj.emit('personal message', msg, from, to.id);
       }
     });
   });
@@ -59,7 +61,7 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     users = users.filter(function( obj ) {
       if(obj.id == socket.id) {
-        io.emit('bot message', obj.pokemon.name + ' saiu');
+        io.emit('bot message', obj.pokemon.name + ' saiu', obj, 'exit');
       }
       return obj.id !== socket.id;
     });
