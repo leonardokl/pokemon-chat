@@ -8,7 +8,6 @@ var express = require('express')
   , Pokemons = require('./models/pokemons').pokemons
   ;
 
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,11 +15,11 @@ app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   res.render('chat');
 });
 
-app.put('/message', function(req, res){
+app.put('/api/message', function(req, res) {
   io.emit('bot message', req.body.message);
   res.status(200).json({
     success: true,
@@ -32,36 +31,35 @@ app.put('/message', function(req, res){
 // socket.io
 var users = [];
 
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
   user = {
     id: socket.id,
-    pokemon: Pokemons[Math.floor((Math.random() * 150))],
+    pokemon: Pokemons[Math.floor((Math.random() * 150))]
   };
   users.push(user);
-
   socket.emit('new_user', user);
 
   //new user event
   io.emit('bot message', user.pokemon.name + ' entrou');
-
-  io.emit('users_count', users.length);
   io.emit('room_users', users);
 
-  socket.on('chat message', function(msg, user){
+  socket.on('chat message', function(msg, user) {
     io.emit('chat message', msg, user);
   });
 
-  socket.on('disconnect', function(){
+  socket.on('disconnect', function() {
     // remove user
     users = users.filter(function( obj ) {
+      if(obj.id == socket.id) {
+        io.emit('bot message', obj.pokemon.name + ' saiu');
+      }
       return obj.id !== socket.id;
     });
 
-    io.emit('bot message', user.pokemon.name + ' saiu');
     io.emit('room_users', users);
   });
 });
 
-http.listen(8080, function(){
+http.listen(8080, function() {
   console.log('listening on :8080');
 });
