@@ -27,11 +27,11 @@
     function getDominantColor() {
       var myImage = document.getElementById('profile');
       myImage.addEventListener('load', function() {
-          var colorThief = new ColorThief(),
-              color = colorThief.getColor(myImage),
-              colorRgb = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')';
-              $('nav').css("background-color", colorRgb);
-          return colorRgb;
+        var colorThief = new ColorThief(),
+        color = colorThief.getColor(myImage),
+        colorRgb = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')';
+        $('nav').css("background-color", colorRgb);
+        return colorRgb;
       });
     }
   </script>

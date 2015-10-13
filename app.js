@@ -30,13 +30,14 @@ app.put('/api/message', function(req, res) {
 
 // socket.io
 var users = [];
-
+var sockets = [];
 io.on('connection', function(socket) {
   user = {
     id: socket.id,
     pokemon: Pokemons[Math.floor((Math.random() * 150))]
   };
   users.push(user);
+  sockets.push(socket);
   socket.emit('new_user', user);
 
   //new user event
@@ -47,8 +48,15 @@ io.on('connection', function(socket) {
     io.emit('chat message', msg, user);
   });
 
+  socket.on('personal message', function(msg, from, to) {
+    sockets.filter(function(obj) {
+      if(obj.id == to) {
+        obj.emit('personal message', msg, from, to);
+      }
+    });
+  });
+
   socket.on('disconnect', function() {
-    // remove user
     users = users.filter(function( obj ) {
       if(obj.id == socket.id) {
         io.emit('bot message', obj.pokemon.name + ' saiu');
