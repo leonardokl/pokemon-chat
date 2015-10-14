@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pokemon Chat</title>
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/chat.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="image/x-icon" rel="icon" href="img/node-pokeball.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<body>
+	<div id="app">
+		<header class="navbar-fixed">
+			<nav>
+				<ul id="slide-out" class="side-nav fixed" >
+					<li id="userName"></li>
+					<li id="userImage"></li>
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion">
+							<li >
+								<a onCLick='getRoomMsg()' class="collapsible-header"><i class="tiny material-icons">input</i>#Stadium</a>
+								<!--<div class="collapsible-body">
+									<ul>
+										<li><a onCLick='getRoomMsg()' href="#">#Stadium</a></li>
+										<li><a >#Johto</a></li>
+									</ul>
+								</div>-->
+							</li>
+						</ul>
+					</li>
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion">
+							<li>
+								<a class="collapsible-header" ><i class="tiny material-icons">supervisor_account</i>Users (<span id="nUsers">0</span>)</a>
+								<div class="collapsible-body">
+									<ul id="roomUsers">
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+
+				<div class="nav-wrapper">
+					<a id="roomName" href="#" class="brand-logo center">#Stadium</a>
+				</div>
+			</nav>
+		</header>
+
+		<!-- MAIN CONTENT -->
+		<main>
+			{{{body}}}
+
+		</main>
+	</div>
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript">
+	$(".button-collapse").sideNav();
+	</script>
+</body>
+</html>

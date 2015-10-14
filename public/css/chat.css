@@ -1,0 +1,29 @@
+main, footer {
+  padding-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+  main, footer {
+    padding-left: 0;
+},
+
+}
+@media only screen and (min-width: 992px) {
+  nav .brand-logo.center { padding-left:240px;}
+}
+
+#toast-container a {
+  color:white;
+}
+
+#messages a {
+  color: #2D2D2D;
+}
+
+#userName a {
+  font-size:large;
+}
+
+.collection .collection-item.avatar {
+  min-height:65px;
+}
