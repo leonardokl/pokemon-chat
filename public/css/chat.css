@@ -19,3 +19,11 @@ main, footer {
 #messages a {
   color: #2D2D2D;
 }
+
+#userName a {
+  font-size:large;
+}
+
+.collection .collection-item.avatar {
+  min-height:65px;
+}

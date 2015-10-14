@@ -26,7 +26,7 @@ $('form').submit(function() {
 socket.on('new_user', function(user) {
   login = user;
   $('#userImage').html("<li><img id='profile' src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='responsive-img'></li>");
-  $('#userName').html("<li><a ><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon.name + "</a></li>");
+  $('#userName').html("<a ><i class='tiny material-icons' style='color:#57B557'>info</i><b> " + user.pokemon.name + "</b></a>");
   getDominantColor();
 });
 
