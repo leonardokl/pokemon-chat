@@ -13,6 +13,7 @@ $('form').submit(function() {
     var message = "<li class='collection-item avatar'><img src='img/pokemons/" + login.pokemon._id + ".png' alt='' class='circle'><span class='title'><b>" + login.pokemon.name + "</b></span><p>" + msg + "</p></li>";
     socket.emit('personal message', $('#icon_prefix').val(), login, roomDest);
     $('#messages').append(message);
+    document.getElementById( 'last-message' ).scrollIntoView();
     addUserMsg(message, roomDest.id);
   } else {
     socket.emit('chat message', $('#icon_prefix').val(), login, roomDest);
@@ -32,8 +33,10 @@ socket.on('new_user', function(user) {
 socket.on('chat message', function(msg, user) {
   var message = "<li class='collection-item avatar'><img src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='circle'><span class='title'><b>" + user.pokemon.name + "</b></span><p>" + msg + "</p></li>";
   stadium.push(message);
-  $('#messages').append(message);
-  document.getElementById( 'last-message' ).scrollIntoView();
+  if(roomDest == 'Stadium') {
+    $('#messages').append(message);
+    document.getElementById( 'last-message' ).scrollIntoView();
+  }
 });
 
 socket.on('personal message', function(msg, from, to) {
@@ -42,6 +45,7 @@ socket.on('personal message', function(msg, from, to) {
 
   if(roomDest.id == from.id) {
     $('#messages').append(message);
+    document.getElementById( 'last-message' ).scrollIntoView();
   } else {
     Materialize.toast(from.pokemon.name + ' enviou uma mensagem', 4000);
   }
