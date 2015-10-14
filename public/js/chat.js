@@ -9,7 +9,6 @@ var roomDest = 'Stadium';
 $('form').submit(function() {
   if(roomDest != 'Stadium') {
     socket.emit('personal message', $('#icon_prefix').val(), login, roomDest);
-    console.log(roomDest);
   } else {
     socket.emit('chat message', $('#icon_prefix').val(), login, roomDest);
   }
@@ -33,12 +32,16 @@ socket.on('chat message', function(msg, user) {
 });
 
 socket.on('personal message', function(msg, from, to) {
-  var message = from.pokemon.name + ': ' + msg;
-  Materialize.toast(message, 4000);
+  var message = "<li class='collection-item avatar'><img src='img/pokemons/" + from.pokemon._id + ".png' alt='' class='circle'><span class='title'><b>" + from.pokemon.name + "</b></span><p>" + msg + "</p></li>";
+  Materialize.toast(from.pokemon.name + ' enviou uma mensagem', 4000);
+  Materialize.toast(from.pokemon.name + ': ' + msg, 4000);
+  console.log('addUserMsg');
+  addUserMsg(message, from.id);
 });
 
 socket.on('bot message', function(msg, user, type) {
   if(type == 'enter' && checked == true) {
+    user.messages = [];
     onlineUsers.push(user);
   } else if(type == 'exit' && checked == true) {
     onlineUsers = onlineUsers.filter(function( obj ) {
@@ -73,6 +76,7 @@ function sendPersonalMsg(msg, from, to) {
   $('#messages').empty();
   $('#roomName').html(target.pokemon.name);
   roomDest = target;
+  getUserMsg();
 }
 
 function getRoomMsg() {
@@ -89,4 +93,21 @@ function findOnlineUsersById(to) {
     }
   });
   return target;
+}
+
+function addUserMsg(msg, from) {
+  $.each(onlineUsers, function( key, val ) {
+    if(String(onlineUsers[key].id) == String(from)) {
+      onlineUsers[key].messages.push(msg);
+    }
+  });
+}
+
+function getUserMsg() {
+  $.each(onlineUsers, function( key, val ) {
+    if(String(onlineUsers[key].id) == String(roomDest.id)) {
+      $('#messages').append(onlineUsers[key].messages);
+    }
+  });
+
 }
