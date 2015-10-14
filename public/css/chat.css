@@ -12,6 +12,10 @@ main, footer {
   nav .brand-logo.center { padding-left:240px;}
 }
 
-#toast-container a{
+#toast-container a {
   color:white;
+}
+
+#messages a {
+  color: #2D2D2D;
 }
