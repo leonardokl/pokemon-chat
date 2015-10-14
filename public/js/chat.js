@@ -26,17 +26,27 @@ $('form').submit(function() {
 socket.on('new_user', function(user) {
   login = user;
   $('#userImage').html("<li><img id='profile' src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='responsive-img'></li>");
-  $('#userName').html("<li><a onCLick='getRoomMsg()'><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon.name + "</a></li>");
+  $('#userName').html("<li><a ><i class='tiny material-icons' style='color:green'>info</i> " + user.pokemon.name + "</a></li>");
   getDominantColor();
 });
 
 socket.on('chat message', function(msg, user) {
-  var message = "<li class='collection-item avatar'><img src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='circle'><span class='title'><b>" + user.pokemon.name + "</b></span><p>" + msg + "</p></li>";
+  if(user.id == login.id) {
+    var message = "<li class='collection-item avatar'><img src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='circle'><span class='title'><b><a id=" + user.id + ">" + user.pokemon.name + "</a></b></span><p>" + msg + "</p></li>";
+  } else {
+    var message = "<li class='collection-item avatar'><img src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='circle'><span class='title'><b><a href='#' id=" + user.id + ">" + user.pokemon.name + "</a></b></span><p>" + msg + "</p></li>";
+  }
+
   stadium.push(message);
   if(roomDest == 'Stadium') {
     $('#messages').append(message);
     document.getElementById( 'last-message' ).scrollIntoView();
   }
+  $("#messages a").click(function() {
+    if(this.id != login.id) {
+      sendPersonalMsg('', login.pokemon.name, this.id);
+    }
+  });
 });
 
 socket.on('personal message', function(msg, from, to) {
@@ -47,7 +57,11 @@ socket.on('personal message', function(msg, from, to) {
     $('#messages').append(message);
     document.getElementById( 'last-message' ).scrollIntoView();
   } else {
-    Materialize.toast(from.pokemon.name + ' enviou uma mensagem', 4000);
+    Materialize.toast("<a id=" + from.id + ">" + from.pokemon.name + ' enviou uma mensagem' + "</a>", 4000);
+    $("#toast-container a").click(function() {
+        sendPersonalMsg('; )', login.pokemon.name, this.id);
+        document.getElementById( 'last-message' ).scrollIntoView();
+    });
   }
 });
 
@@ -73,7 +87,11 @@ socket.on('room_users', function(users) {
       users[key].messages = [];
       onlineUsers.push(users[key]);
     }
-    usersLi.push("<li><a id='" + users[key].id + "' >" + users[key].pokemon.name + "</a></li>")
+    if(users[key].id == login.id) {
+      usersLi.push("<li><a id='" + users[key].id + "' >" + users[key].pokemon.name + "</a></li>")
+    } else {
+      usersLi.push("<li><a href='#' id='" + users[key].id + "' >" + users[key].pokemon.name + "</a></li>")
+    }
   });
   checked = true;
   $("#roomUsers").html(usersLi);
@@ -95,10 +113,15 @@ function sendPersonalMsg(msg, from, to) {
 
 function getRoomMsg() {
   roomDest = 'Stadium';
-  $('#roomName').html(roomDest);
+  $('#roomName').html('#' + roomDest);
   $('#messages').empty();
   $('#messages').append(stadium);
   document.getElementById( 'last-message' ).scrollIntoView();
+  $("#messages a").click(function() {
+    if(this.id != login.id) {
+      sendPersonalMsg('', login.pokemon.name, this.id);
+    }
+  });
 }
 
 function findOnlineUsersById(to) {
@@ -124,5 +147,4 @@ function getUserMsg() {
       $('#messages').append(onlineUsers[key].messages);
     }
   });
-
 }

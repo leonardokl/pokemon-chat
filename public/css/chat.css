@@ -6,8 +6,12 @@ main, footer {
   main, footer {
     padding-left: 0;
 },
-		  
+
 }
 @media only screen and (min-width: 992px) {
   nav .brand-logo.center { padding-left:240px;}
+}
+
+#toast-container a{
+  color:white;
 }
