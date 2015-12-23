@@ -1,6 +1,8 @@
 # Pokemon chat
 A simple chat created to test the Socket.IO module.
 
+http://pokemon-chat.herokuapp.com
+
 ![Alt text](pokemon.png?raw=true "Screenshoot")
 
 ### How to use
