@@ -6,6 +6,7 @@ var express = require('express')
   , handlebars = require('express-handlebars').create({ defaultLayout:'main' })
   , bodyParser = require('body-parser')
   , Pokemons = require('./models/pokemons').pokemons
+  , port = process.env.PORT || 8080
   ;
 
 app.use(morgan('dev'));
@@ -70,6 +71,6 @@ io.on('connection', function(socket) {
   });
 });
 
-http.listen(8080, function() {
+http.listen(port, function() {
   console.log('listening on :8080');
 });
