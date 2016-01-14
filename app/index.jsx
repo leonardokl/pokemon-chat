@@ -2,6 +2,7 @@ import React from 'react';
 import 'array.prototype.findindex';
 import App from './components/App.jsx';
 import alt from './libs/alt';
+import Jquery from "jquery";
 /*import storage from './libs/storage';
 import persist from './libs/persist';*/
 /*import './main.css';*/

@@ -1,11 +1,9 @@
 import React from 'react';
 
-export default class Navbar extends React.Component {
+export default class Sidenav extends React.Component {
   render() {
 
     return (
-			<header className="navbar-fixed">
-				<nav>
 					<ul id="slide-out" className="side-nav fixed" >
 						<li id="userName"></li>
 						<li id="userImage"></li>
@@ -30,12 +28,6 @@ export default class Navbar extends React.Component {
 					</ul>
 
 					<a href="#" data-activates="slide-out" className="button-collapse"><i className="mdi-navigation-menu"></i></a>
-
-					<div className="nav-wrapper">
-						<a id="roomName" href="#" className="brand-logo center">#Stadium</a>
-					</div>
-				</nav>
-			</header>
     );
   }
 
