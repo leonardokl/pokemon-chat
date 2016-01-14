@@ -25,9 +25,7 @@ export default class Sidenav extends React.Component {
 								</li>
 							</ul>
 						</li>
-					</ul>
-
-					<a href="#" data-activates="slide-out" className="button-collapse"><i className="mdi-navigation-menu"></i></a>
+					</ul>					
     );
   }
 
