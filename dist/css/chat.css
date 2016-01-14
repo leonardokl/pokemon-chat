@@ -12,6 +12,7 @@ main, footer {
   nav .brand-logo.center { padding-left:240px;}
 }
 
+
 #toast-container a {
   color:white;
 }
@@ -20,6 +21,9 @@ main, footer {
   color: #2D2D2D;
 }
 
+#messages {
+	margin-bottom: 70px
+}
 #userName a {
   font-size:large;
 }
