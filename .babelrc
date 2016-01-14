@@ -1,0 +1,25 @@
+{
+  "stage": 1,
+  "env": {
+    "start": {
+      "plugins": [
+        "react-transform"
+      ],
+      "extra": {
+        "react-transform": {
+          "transforms": [
+            {
+              "transform": "react-transform-hmr",
+              "imports": ["react"],
+              "locals": ["module"]
+            }
+          ]
+        }
+      }
+    },
+
+    "build": {
+      "optional": ["optimisation", "minification"]
+    }
+  }
+}
