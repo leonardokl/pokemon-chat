@@ -11,6 +11,21 @@ class ComposerStore {
   activeComposer() {
 		console.log("COMPOSER_STORE");
 		$("#composer-label").addClass("active");
+		setInterval(function(){
+		 getfocus();
+		});
+
+		function getfocus()
+		{
+		  var focusbox;
+		  focusbox = document.getElementById("icon_prefix");
+		  {
+		    setTimeout(function() {
+		      focusbox.focus();
+		    }, 1);
+		  }
+
+		}
   }
 }
 
