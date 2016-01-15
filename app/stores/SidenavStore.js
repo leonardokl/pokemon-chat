@@ -7,9 +7,7 @@ class SidenavStore {
 
     this.user = "";
   }
-
   selectRoom() {
-		
 	}
 }
 

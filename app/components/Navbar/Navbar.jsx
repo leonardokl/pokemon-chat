@@ -2,8 +2,8 @@ import React from 'react';
 import Sidenav from './Sidenav';
 
 export default class Navbar extends React.Component {
-  render() {
 
+	render() {
     return (
 			<header className="navbar-fixed">
 				<nav>

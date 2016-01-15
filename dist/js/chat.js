@@ -25,8 +25,8 @@ $('form').submit(function() {
 //quando entrar no chat
 socket.on('new_user', function(user) {
   login = user;
-  $('#userImage').html("<li><img id='profile' src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='responsive-img'></li>");
-  $('#userName').html("<a ><i class='tiny material-icons' style='color:#57B557'>info</i><b> " + user.pokemon.name + "</b></a>");
+  $('#userImage').html("<img id='profile' src='img/pokemons/" + user.pokemon._id + ".png' alt='' class='responsive-img'>");
+	$('#userName').html("<a ><img class='pokechat-logo' src='img/node-pokeball.png' alt='' class='responsive-img'><b> " + user.pokemon.name + "</b></a>");
   getDominantColor();
 });
 

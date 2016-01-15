@@ -19,6 +19,7 @@ main, footer {
 .side-nav li:hover {
     background-color: #EFEFEF;
 }
+
 #toast-container a {
   color:white;
 }
@@ -32,6 +33,13 @@ main, footer {
 }
 #userName a {
   font-size:large;
+}
+
+img.pokechat-logo {
+	width: 32px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
 }
 
 .collection .collection-item.avatar {
