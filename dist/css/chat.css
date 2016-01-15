@@ -1,0 +1,47 @@
+main, footer {
+  padding-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+  main, footer {
+    padding-left: 0;
+},
+
+}
+@media only screen and (min-width: 992px) {
+  nav .brand-logo.center { padding-left:240px;}
+}
+
+.side-nav li.active {
+    background-color: #FFF;
+}
+
+.side-nav li:hover {
+    background-color: #EFEFEF;
+}
+
+#toast-container a {
+  color:white;
+}
+
+#messages a {
+  color: #2D2D2D;
+}
+
+#messages {
+	margin-bottom: 70px
+}
+#userName a {
+  font-size:large;
+}
+
+img.pokechat-logo {
+	width: 32px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.collection .collection-item.avatar {
+  min-height:65px;
+}

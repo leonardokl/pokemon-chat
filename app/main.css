@@ -1,0 +1,39 @@
+main, footer {
+  padding-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+  main, footer {
+    padding-left: 0;
+},
+
+}
+@media only screen and (min-width: 992px) {
+  nav .brand-logo.center { padding-left:240px;}
+}
+
+.side-nav li.active {
+    background-color: #FFF;
+}
+
+.side-nav li:hover {
+    background-color: #EFEFEF;
+}
+#toast-container a {
+  color:white;
+}
+
+#messages a {
+  color: #2D2D2D;
+}
+
+#messages {
+	margin-bottom: 70px
+}
+#userName a {
+  font-size:large;
+}
+
+.collection .collection-item.avatar {
+  min-height:65px;
+}

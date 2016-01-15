@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pokemon Chat</title>
+		<link rel="stylesheet" href="css/materialize.min.css">
+		<link rel="stylesheet" href="css/chat.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="image/x-icon" rel="icon" href="img/node-pokeball.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	</head>
+  <body>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="bundle.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript">
+			$(".button-collapse").sideNav();
+		</script>
+	  <script src="/socket.io/socket.io.js"></script>
+	  <script src="js/chat.js"></script>
+	  <script src="js/color-thief.min.js"></script>
+
+	  <script>
+	    function getDominantColor() {
+	      var myImage = document.getElementById('profile');
+	      myImage.addEventListener('load', function() {
+	        var colorThief = new ColorThief(),
+	        color = colorThief.getColor(myImage),
+	        colorRgb = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')';
+	        $('nav').css("background-color", colorRgb);
+					//TODO: tira isso daqui
+					$("#composer-label").addClass("active");
+	        return colorRgb;
+	      });
+	    }
+
+	  </script>
+
+  </body>
+</html>
