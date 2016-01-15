@@ -12,11 +12,13 @@ main, footer {
   nav .brand-logo.center { padding-left:240px;}
 }
 
-
-.side-nav li.active, .side-nav li:hover {
-    background-color: #EFEFEF;
+.side-nav li.active {
+    background-color: #FFF;
 }
 
+.side-nav li:hover {
+    background-color: #EFEFEF;
+}
 #toast-container a {
   color:white;
 }
