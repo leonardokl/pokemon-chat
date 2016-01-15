@@ -42,6 +42,14 @@ img.pokechat-logo {
 	margin-right: 10px;
 }
 
+.collection li:hover {
+    background-color: #FDFDFD;
+}
+
+.collection .collection-item.avatar .circle {
+    background-color: white;
+}
+
 .collection .collection-item.avatar {
   min-height:65px;
 }
