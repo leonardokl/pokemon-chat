@@ -90,7 +90,7 @@ socket.on('room_users', function(users) {
     if(users[key].id == login.id) {
       usersLi.push("<li><a id='" + users[key].id + "' >" + users[key].pokemon.name + "</a></li>")
     } else {
-      usersLi.push("<li><a href='#' id='" + users[key].id + "' >" + users[key].pokemon.name + "</a></li>")
+      usersLi.push("<li><a href='#' id='" + users[key].id + "' class='waves-effect' >" + users[key].pokemon.name + "</a></li>")
     }
   });
   checked = true;

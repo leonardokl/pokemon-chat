@@ -10,14 +10,14 @@ export default class Sidenav extends React.Component {
 						<li className="no-padding">
 							<ul className="collapsible collapsible-accordion">
 								<li >
-									<a id="stadiumRoom" className="collapsible-header"><i className="tiny material-icons">input</i>#Stadium</a>
+									<a id="stadiumRoom" className="collapsible-header waves-effect"><i className="tiny material-icons">input</i>#Stadium</a>
 								</li>
 							</ul>
 						</li>
 						<li className="no-padding">
 							<ul className="collapsible collapsible-accordion">
 								<li>
-									<a className="collapsible-header" ><i className="tiny material-icons">supervisor_account</i>Users (<span id="nUsers">0</span>)</a>
+									<a className="collapsible-header waves-effect" ><i className="tiny material-icons">supervisor_account</i>Users (<span id="nUsers">0</span>)</a>
 									<div className="collapsible-body">
 										<ul id="roomUsers">
 										</ul>
