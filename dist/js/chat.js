@@ -103,6 +103,10 @@ socket.on('room_users', function(users) {
   });
 });
 
+$("#stadiumRoom").click(function() {
+  getRoomMsg();
+});
+
 function sendPersonalMsg(msg, from, to) {
   var target = findOnlineUsersById(to);
   $('#messages').empty();

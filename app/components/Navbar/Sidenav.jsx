@@ -6,11 +6,11 @@ export default class Sidenav extends React.Component {
     return (
 					<ul id="slide-out" className="side-nav fixed" >
 						<li id="userName"></li>
-						<li id="userImage"></li>
+					  <li id="userImage"></li>
 						<li className="no-padding">
 							<ul className="collapsible collapsible-accordion">
 								<li >
-									<a onCLick='getRoomMsg()' className="collapsible-header"><i className="tiny material-icons">input</i>#Stadium</a>
+									<a id="stadiumRoom" className="collapsible-header"><i className="tiny material-icons">input</i>#Stadium</a>
 								</li>
 							</ul>
 						</li>
@@ -25,7 +25,7 @@ export default class Sidenav extends React.Component {
 								</li>
 							</ul>
 						</li>
-					</ul>					
+					</ul>
     );
   }
 

@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "start": "node server.js",
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+		"build": "node_modules/.bin/webpack"
   },
   "author": "Leonardo Luiz",
   "license": "ISC",

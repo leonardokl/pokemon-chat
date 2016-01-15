@@ -1,4 +1,6 @@
 import React from 'react';
+import ComposerActions from '../../actions/ComposerActions';
+import ComposerStore from '../../stores/ComposerStore';
 
 var divStyle = {
 	position:"fixed",
@@ -8,15 +10,18 @@ var divStyle = {
 };
 
 export default class Composer extends React.Component {
-  render() {
+	componentDidMount() {
+		ComposerActions.activeComposer();
+	}
 
+  render() {
     return (
 			<div id="message-container" className="col s12 m12 l12" style={divStyle}>
 				<form >
 						<div className="input-field col s12">
 								<i className="material-icons prefix">message</i>
 								<input id="icon_prefix" type="text" autoComplete="off" autoFocus/>
-								<label htmlFor="icon_prefix">Envie uma mensagem</label>
+								<label id="composer-label" class="active" htmlFor="icon_prefix" >Envie uma mensagem</label>
 						</div>
 				</form>
 			</div>

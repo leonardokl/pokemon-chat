@@ -12,4 +12,4 @@ class NavbarStore {
   }
 }
 
-export default alt.createStore(LaneStore, 'NavbarStore');
+export default alt.createStore(NavbarStore, 'NavbarStore');
